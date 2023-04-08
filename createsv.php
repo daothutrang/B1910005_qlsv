@@ -1,3 +1,5 @@
+
+mysql://uals7ougv4ckk1zr:GNYP7pM6kJ6Yu0mcfiFz@btz6puevibn8o70fouji-mysql.services.clever-cloud.com:3306/btz6puevibn8o70fouji
 <?php
 // Kết nối đến MySQL
 $conn = mysqli_connect("host", "username", "password", "database_name");
