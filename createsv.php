@@ -1,5 +1,5 @@
 <?php
-    // Lấy thông tin kết nối đến cơ sở dữ liệu từ biến môi trường
+    // Lấy thông tin kết nối MySQL từ biến môi trường
     $MYSQL_ADDON_HOST = getenv('MYSQL_ADDON_HOST');
     $MYSQL_ADDON_PORT = getenv('MYSQL_ADDON_PORT');
     $MYSQL_ADDON_DB = getenv('MYSQL_ADDON_DB');
@@ -17,14 +17,20 @@
 
     // Tạo bảng masv_cua_ban_qlsv
     $sql = "CREATE TABLE masv_cua_ban_qlsv (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    ho_ten VARCHAR(50) NOT NULL,
-    nam_sinh INT NOT NULL,
-    email VARCHAR(70) NOT NULL UNIQUE
+        id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        ho_ten VARCHAR(50) NOT NULL,
+        nam_sinh INT(4) NOT NULL,
+        email VARCHAR(70) NOT NULL UNIQUE
     )";
+
     if (mysqli_query($conn, $sql)) {
-        echo "\n\nTable created successfully.";
+        echo "<p>Table 'masv_cua_ban_qlsv' created successfully.</p>";
+        echo "<a href='index.php'>Back to home page</a>";
     } else {
-        echo "\n\nERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        echo "<p>ERROR: Could not able to execute $sql. " . mysqli_error($conn) . "</p>";
+        echo "<a href='index.php'>Back to home page</a>";
     }
+
+    // Đóng kết nối
+    mysqli_close($conn);
 ?>
